@@ -2,7 +2,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+int dsum(int n){
+int r,sums=0;
+while(n!=0){
+    r=n%10;
+    sums=sums+r;
+    n/=10;
+    }
+if(sums==1) return true;
+else if(sums>9) return dsum(sums);
+else return false;
+    
+}
 int main()
 {
     int n, copy1, remainder, result = 0, sum = 0, copy, revsum = 0, lstdig, m, d, r = 0, i, flag = 0;
@@ -49,22 +60,9 @@ int main()
             printf("Enter a Number\n");
             scanf("%d", &n);
               
-            copy1 = n;
-            while (n > 0) {
-                sum += n % 10; // Sum of digits
-                n /= 10;
-            }
+            
 
-            copy = sum;
-            revsum = 0;
-
-            while (sum > 0) {
-                lstdig = sum % 10;
-                revsum = (revsum * 10) + lstdig;
-                sum /= 10;
-            }
-
-            if (copy1 == (copy * revsum))
+            if (dsum(n))
                 printf("YES, it's a Magic Number");
             else
                 printf("NO, it's not a Magic Number");
