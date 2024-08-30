@@ -29,11 +29,16 @@ int main()
 
             while (copy1 != 0) {
                 remainder = copy1 % 10;
-                result += remainder * remainder * remainder;
+                result ++;
                 copy1 /= 10;
             }
-
-            if (result == n)
+             copy1=n;
+            while(copy1!=0){
+            remainder=copy1%10;
+            sum=sum+pow(remainder,result);
+            copy1/=10;
+            }
+            if (sum == n)
                 printf("YES, it's an Armstrong number");
             else
                 printf("NO, it's not an Armstrong number");
